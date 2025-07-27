@@ -13,7 +13,8 @@ Problem it solves:
    - compressing the data before sending so it consumes less space
    - streaming
    - object creation  
-     By solving these complexities RPC helps you focus on business logic instead of fixing these.
+     Basically there's something called **_Stubs_** which takes care of serialization, deserialization, request/response etc. and is core part of RPC,
+     By solving these complexities RPC helps you focus on business logic instead of fixing these, by hiding the complexities of remote/network calls.
 
 ## 2. Asynchronous Communication
 
