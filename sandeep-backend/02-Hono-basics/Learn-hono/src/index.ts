@@ -18,4 +18,10 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
+app.post('/post', (c) => c.text('POST /'))
+
+app.get('/wild/*/card', (c) => {
+  return c.text('GET /wild/*/card')
+})
+
 export default app
