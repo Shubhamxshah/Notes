@@ -34,3 +34,20 @@ plusOne( 41 );      // 42 <-- 1 + 41
 
 plusTen( 13 );      // 23 <-- 10 + 13
 ```
+
+3. Prototypes are fallback mechanisms in object when linked to another project done on creation or otherwise: for e.g.
+
+```
+var foo = {
+    a: 42
+};
+
+// create `bar` and link it to `foo`
+var bar = Object.create( foo );
+foo.c = "shubham"
+bar.b = "hello world";
+
+bar.b;      // "hello world"
+bar.a;      // 42
+bar.c;      // "shubham"
+```
