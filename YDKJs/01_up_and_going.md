@@ -1,4 +1,4 @@
-1. Hoisting in javascript is behavior where var and function declarations are moved to the top of the scope (either global scope or functiona; sscope) before the code is executed.
+1. Hoisting in javascript is behavior where var and function declarations are moved to the top of the scope (either global scope or functions scope respectively;) before the code is executed.
 2. Closure: you can think of closure as a way to 'remember' and continue to access a function's scope (its variables) even once the function has finished running.
    Consider:
 
@@ -34,6 +34,49 @@ plusOne( 41 );      // 42 <-- 1 + 41
 
 plusTen( 13 );      // 23 <-- 10 + 13
 ```
+
+### Modules Pattern
+
+most common usage of closure is module pattern. Modules let you define private implementation details(variables, functions) that are hidden from the outside world, as well as a public api thats accessible from outside.
+
+consider:
+
+```
+function User() {
+  var username, password;
+
+  function doLogin(user, pw) {
+    username = user;
+    password = pw;
+
+    // do rest of function
+  }
+
+  var publicAPI = {
+    login: doLogin
+  }
+
+  return publicAPI;
+}
+
+var fred = User();
+fred.login('shubhamxshah', 'shub01')
+```
+
+```
+
+```
+
+normally when a function completes running its variables diappear, but doLogin survives, because a reference to it is stored in fred.login()
+
+so here javascript says:
+
+```
+  hey, this function (`doLogin`) still needs access to username, and password so i still have to keep them alive.
+```
+
+This keep alive moment is closure.
+`doLogin` still remembers `username` and `password`, even though `User()` finished executing.
 
 3. Prototypes are fallback mechanisms in object when linked to another project done on creation or otherwise: for e.g.
 
