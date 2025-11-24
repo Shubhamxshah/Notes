@@ -87,3 +87,29 @@ fetchCharacterData(characterId, function(character) {
 ```
 
 The `calculateWeaponDamage` function calculates the damage Geralt would deal with a knife or sword. We specify the weapon type using the `weapon` parameter. If an invalid weapon type is provided, an error message is returned. We perform the operations sequentially using callbacks. Finally, the calculated weapon damage is logged to the console. As seen in this example, the use of callbacks can lead to complexity known as **callback hell.**
+
+# Promises
+
+Promises simplify asynchronous operations by reducing the complexity of callbacks, making the code more readable. A promise represents a value that may be available now, or in the future, or never.
+
+```
+function fetchData() {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function (data) {
+      if (data === "sample data") {
+        resolve(data)
+      } else {
+        reject()
+      }
+    }, 2000)
+  })
+}
+
+fetchData()
+.then(function(xyz){
+  console.log(xyz)  // sample data
+})
+.catch(function() {
+  console.log('error, invalid data')
+})
+```
