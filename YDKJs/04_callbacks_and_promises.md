@@ -227,6 +227,35 @@ fetchCharacterData(characterId)
     console.log('Error: ' + error);
   });
 ```
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+# Async/Await
+
+Async/Await, offers a more modern approach to handling asynchronous operations. Async functions allow for a natural and readable sequence of operations.
+
+```
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(function(){
+      const data = "sample data";
+      if (data) {
+        resolve(data)
+      } else {
+        reject("data not retrieved")
+      }
+    })
+  }
+}
+
+async function processAsynData() {
+  try {
+    const data = await fetchData();
+    console.log(data)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+processAsyncData();
+```
+
+read more at this [medium](https://medium.com/@mkare/asynchronous-programming-in-javascript-callbacks-promises-and-async-await-ef683398b455) article.
