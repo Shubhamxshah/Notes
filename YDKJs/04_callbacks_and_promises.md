@@ -259,3 +259,18 @@ processAsyncData();
 ```
 
 read more at this [medium](https://medium.com/@mkare/asynchronous-programming-in-javascript-callbacks-promises-and-async-await-ef683398b455) article.
+
+## Promise methods
+
+| Method                      | What it Does                                 | Example                                              |
+| --------------------------- | -------------------------------------------- | ---------------------------------------------------- |
+| `Promise.resolve(value)`    | Creates a Promise that resolves immediately. | `Promise.resolve(5).then(console.log)`               |
+| `Promise.reject(error)`     | Creates a Promise that rejects immediately.  | `Promise.reject("err").catch(console.log)`           |
+| `promise.then()`            | Runs on success.                             | `fetch(url).then(res => console.log(res))`           |
+| `promise.catch()`           | Runs on error.                               | `fetch(url).catch(err => console.error(err))`        |
+| `promise.finally()`         | Runs whether resolved/rejected.              | `fetch(url).finally(() => console.log("done"))`      |
+| `Promise.all([...])`        | Wait for all to succeed, fail if one fails.  | `Promise.all([p1,p2]).then(console.log)`             |
+| `Promise.allSettled([...])` | Wait for all, return statuses.               | `Promise.allSettled([p1,p2]).then(console.log)`      |
+| `Promise.race([...])`       | First promise to settle wins.                | `Promise.race([a,b]).then(console.log)`              |
+| `Promise.any([...])`        | First fulfilled promise wins.                | `Promise.any([a,b]).then(console.log)`               |
+| `Promise.withResolvers()`   | Gives `{promise, resolve, reject}`.          | `const {promise, resolve} = Promise.withResolvers()` |
