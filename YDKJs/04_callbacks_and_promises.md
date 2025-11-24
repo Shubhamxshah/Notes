@@ -101,7 +101,62 @@ function fetchData() {
       } else {
         reject()
       }
-    }, 2000)
+    }, 2000)Let’s now recreate the Geralt example using promises.
+
+function fetchCharacterData(characterId) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      // Simulate character data
+      const character = {
+        id: characterId,
+        name: 'Geralt',
+        level: 35,
+        weapon: 'sword',
+        attackPower: 80
+      };
+      if (character) {
+        resolve(character);
+      } else {
+        reject('Character data not retrieved');
+      }
+    }, 500);
+  });
+}
+
+function calculateWeaponDamage(character, weapon) {
+  return new Promise(function(resolve, reject) {
+    const attackPower = character.attackPower;
+    let weaponMultiplier;
+
+    if (weapon === 'sword') {
+      weaponMultiplier = 1.5;
+    } else if (weapon === 'knife') {
+      weaponMultiplier = 1.8;
+    } else {
+      reject('Invalid weapon');
+      return;
+    }
+
+    setTimeout(function() {
+      const weaponDamage = attackPower * weaponMultiplier;
+      resolve(weaponDamage);
+    }, 500);
+  });
+}
+
+const characterId = 123;
+const weaponType = 'knife'; // or 'sword'
+
+fetchCharacterData(characterId)
+  .then(function(character) {
+    return calculateWeaponDamage(character, weaponType);
+  })
+  .then(function(weaponDamage) {
+    console.log(`Weapon damage: ${weaponDamage}`);
+  })
+  .catch(function(error) {
+    console.log('Error: ' + error);
+  });
   })
 }
 
@@ -113,3 +168,65 @@ fetchData()
   console.log('error, invalid data')
 })
 ```
+
+Let’s now recreate the Geralt example using promises.
+
+```
+function fetchCharacterData(characterId) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      // Simulate character data
+      const character = {
+        id: characterId,
+        name: 'Geralt',
+        level: 35,
+        weapon: 'sword',
+        attackPower: 80
+      };
+      if (character) {
+        resolve(character);
+      } else {
+        reject('Character data not retrieved');
+      }
+    }, 500);
+  });
+}
+
+function calculateWeaponDamage(character, weapon) {
+  return new Promise(function(resolve, reject) {
+    const attackPower = character.attackPower;
+    let weaponMultiplier;
+
+    if (weapon === 'sword') {
+      weaponMultiplier = 1.5;
+    } else if (weapon === 'knife') {
+      weaponMultiplier = 1.8;
+    } else {
+      reject('Invalid weapon');
+      return;
+    }
+
+    setTimeout(function() {
+      const weaponDamage = attackPower * weaponMultiplier;
+      resolve(weaponDamage);
+    }, 500);
+  });
+}
+
+const characterId = 123;
+const weaponType = 'knife'; // or 'sword'
+
+fetchCharacterData(characterId)
+  .then(function(character) {
+    return calculateWeaponDamage(character, weaponType);
+  })
+  .then(function(weaponDamage) {
+    console.log(`Weapon damage: ${weaponDamage}`);
+  })
+  .catch(function(error) {
+    console.log('Error: ' + error);
+  });
+```
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
