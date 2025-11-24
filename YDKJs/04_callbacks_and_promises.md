@@ -274,3 +274,19 @@ read more at this [medium](https://medium.com/@mkare/asynchronous-programming-in
 | `Promise.race([...])`       | First promise to settle wins.                | `Promise.race([a,b]).then(console.log)`              |
 | `Promise.any([...])`        | First fulfilled promise wins.                | `Promise.any([a,b]).then(console.log)`               |
 | `Promise.withResolvers()`   | Gives `{promise, resolve, reject}`.          | `const {promise, resolve} = Promise.withResolvers()` |
+
+just don't do `return new Promise.allSettled([promises])` because **Promise.allSettled is not a constructor**, so new doesn’t work.
+
+✅ `Promise.*` **methods are static methods, not constructors**
+
+`Promise.all()`
+
+`Promise.allSettled()`
+
+`Promise.race()`
+
+`Promise.any()`
+
+`Promise.resolve()`
+
+`Promise.reject()`
