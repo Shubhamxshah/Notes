@@ -38,10 +38,10 @@ It is a group of MongoDB servers (mongod processes) that:
 
 Core idea
 
-````
-```One server is not enough.
+```
+One server is not enough.
 A replica set ensures MongoDB keeps running even if one node fails.
-````
+```
 
 This command:
 
@@ -89,11 +89,11 @@ Example (inside mongosh):
 
 ```
 rs.initiate({
-\_id: "configReplSet",
-configsvr: true,
-members: [
-{ _id: 0, host: "configsvr1:27019" }
-]
+  _id: "configReplSet",
+  configsvr: true,
+  members: [
+    { _id: 0, host: "configsvr1:27019" }
+  ]
 })
 ```
 
@@ -106,6 +106,10 @@ Replica set exists (single-node for now)
 </details>
 
 c. you need to initiate configserver with rs.initiate inside container:
+
+```
+docker exec -it configsvr1 mongosh --port 27019
+```
 
 ```
 rs.initiate({
@@ -126,6 +130,10 @@ docker run -d --name shard2 --net mongo-shard-net -p 27021:27021 mongo:7 mongod 
 ```
 
 Replicaset initilaize in mongodb shard:
+
+```
+docker exec -it shard2 mongosh --port 27021
+```
 
 ```
 rs.initiate({
