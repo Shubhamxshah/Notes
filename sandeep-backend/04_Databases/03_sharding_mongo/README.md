@@ -23,8 +23,86 @@ b. run a config server:
 - `-port 27019` → default port for config servers
 
 <details>
-    <summary>Toggle Switch</summary>
-    Foldable Content[enter image description here][1]
+    <summary>Note</summary>
+A replica set is MongoDB’s high-availability mechanism.
+
+It is a group of MongoDB servers (mongod processes) that:
+
+- All store the same data
+
+- Automatically elect a primary
+
+- Replicate data from primary → secondaries
+
+- Automatically fail over if the primary dies
+
+Core idea
+
+````
+```One server is not enough.
+A replica set ensures MongoDB keeps running even if one node fails.
+````
+
+This command:
+
+- Starts one MongoDB instance
+
+- That instance declares itself as:
+
+- Part of a replica set named configReplSet
+
+- But no replica set actually exists yet
+
+Then what does --replSet configReplSet actually do?
+
+It tells MongoDB:
+
+“I am willing to be part of a replica set called configReplSet.”
+
+That’s it.
+
+It does not:
+
+- Create other nodes
+
+- Elect a primary
+
+- Start replication
+
+Think of it as:
+
+"I'm joining a club, but the club isn't formed yet."
+
+When does a replica set actually start?
+
+Only after you explicitly initiate it.
+
+You must run:
+
+```
+rs.initiate()
+```
+
+(or a full config)
+
+Example (inside mongosh):
+
+```
+rs.initiate({
+\_id: "configReplSet",
+configsvr: true,
+members: [
+{ _id: 0, host: "configsvr1:27019" }
+]
+})
+```
+
+Now:
+
+configsvr1 becomes PRIMARY
+
+Replica set exists (single-node for now)
+
 </details>
 
 c. you need to initiate configserver with rs.initiate inside container:
