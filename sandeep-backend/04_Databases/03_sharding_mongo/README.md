@@ -22,6 +22,11 @@ b. run a config server:
 - `-replSet configReplSet` → config servers must be in a replica set for reliability (all configservers should use same name)
 - `-port 27019` → default port for config servers
 
+<details>
+    <summary>Toggle Switch</summary>
+    Foldable Content[enter image description here][1]
+</details>
+
 c. you need to initiate configserver with rs.initiate inside container:
 
 ```
