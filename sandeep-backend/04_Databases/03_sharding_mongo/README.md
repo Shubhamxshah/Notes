@@ -183,6 +183,7 @@ sh.shardCollection("testDB.myCollection", { _id: "hashed" });
 
 ### How data partitioning happens in distributed databases
 
-1. **Hashing** :
+1. **Hashing** : you distribute each field to a random shard, but the retrieval becomes an issue.
+   so you can distribute each based on for e.g. if three shards and userId is a natural number starting from 1, we can send as userId/3 so each shard can store and retrieve based on that calculation from router. Now, if you add fourth shard, you will have to rearrange all the shards and that becomes a problem.
+   To tackle this we can do consistent hashing. In which we add modulo 12 to each and if <4 we add to shard 1, >4 but <8 we add to shard 2 etc. so now if you want to add a fourth shard you'll just have to rearrange from a single shard. so data rearrangement is necessary but we make it minimal.
    <img width="1909" height="1133" alt="image" src="https://github.com/user-attachments/assets/dcde9d68-f9c1-45ca-b247-8a0b6496eb09" />
-
