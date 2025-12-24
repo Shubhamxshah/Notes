@@ -187,3 +187,10 @@ sh.shardCollection("testDB.myCollection", { _id: "hashed" });
    so you can distribute each based on for e.g. if three shards and userId is a natural number starting from 1, we can send as userId/3 so each shard can store and retrieve based on that calculation from router. Now, if you add fourth shard, you will have to rearrange all the shards and that becomes a problem.
    To tackle this we can do consistent hashing. In which we add modulo 12 to each and if <4 we add to shard 1, >4 but <8 we add to shard 2 etc. so now if you want to add a fourth shard you'll just have to rearrange from a single shard. so data rearrangement is necessary but we make it minimal.
    <img width="1909" height="1133" alt="image" src="https://github.com/user-attachments/assets/dcde9d68-f9c1-45ca-b247-8a0b6496eb09" />
+
+   similarly for postgres you use citusdata to handle distrubution its an open source tool. Handled services like amazon dynamodb, cassandra, excloud.in etc do it for you so you dont have to.
+   for sql google spanner etc.
+
+Cons of consistent hashing:
+
+1. If shards are placed in one direct line in ring if we place it base on their ip address hashing function, all load could go to a single shard. To prevent this we can use virtual db nodes. and placing the value to other ones.
