@@ -194,3 +194,5 @@ sh.shardCollection("testDB.myCollection", { _id: "hashed" });
 Cons of consistent hashing:
 
 1. If shards are placed in one direct line in ring if we place it base on their ip address hashing function, all load could go to a single shard. To prevent this we can use virtual db nodes. and placing the value to other ones.
+   <img width="2006" height="1347" alt="image" src="https://github.com/user-attachments/assets/a7f8ffaf-4b28-44f3-9813-d7bdfd757fa6" />
+
