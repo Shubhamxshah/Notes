@@ -184,3 +184,5 @@ sh.shardCollection("testDB.myCollection", { _id: "hashed" });
 ### How data partitioning happens in distributed databases
 
 1. **Hashing** :
+   <img width="1909" height="1133" alt="image" src="https://github.com/user-attachments/assets/dcde9d68-f9c1-45ca-b247-8a0b6496eb09" />
+
