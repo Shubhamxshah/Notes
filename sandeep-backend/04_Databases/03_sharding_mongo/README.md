@@ -180,3 +180,7 @@ sh.status();
 sh.enableSharding("testDB");
 sh.shardCollection("testDB.myCollection", { _id: "hashed" });
 ```
+
+### How data partitioning happens in distributed databases
+
+1. **Hashing** :
