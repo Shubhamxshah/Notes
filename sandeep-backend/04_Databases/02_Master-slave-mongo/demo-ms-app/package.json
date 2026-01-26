@@ -1,7 +1,7 @@
 {
   "name": "demo-ms-app",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "node init && bun run --hot src/index.ts"
   },
   "dependencies": {
     "hono": "^4.9.0",

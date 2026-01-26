@@ -1,7 +1,7 @@
 {
   "name": "service-B",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "node init && bun run --hot src/index.ts"
   },
   "dependencies": {
     "hono": "^4.10.4"
