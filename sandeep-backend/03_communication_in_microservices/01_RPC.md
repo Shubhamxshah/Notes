@@ -2,7 +2,7 @@
 
 ## 1. Synchronous Communication
 
-Examples include http calls, RPC calls etc.
+They are blocking in nature. Examples include http calls, RPC calls etc.
 
 ### RPC (Remote Procedure Calls)
 
@@ -18,4 +18,4 @@ Problem it solves:
 
 ## 2. Asynchronous Communication
 
-Examples include RabbitMQ, Redis queues etc.
+They are non-blocking. Examples include RabbitMQ, Redis queues etc.
